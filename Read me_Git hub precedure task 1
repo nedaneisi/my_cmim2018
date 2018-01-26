@@ -1,0 +1,21 @@
+# About this repository
+
+The first assignmet of the course computional meethod requires to modify the provided matalb code for the 1D integral by trapezoid rule. The code should be modified in a way that the computional time will be 10 times less. To do that one the foolowing procedure has been done.
+
+1-instead of loop the vetocr has bee nuse.
+2 The vector definatino is modifiend ( to avid calulate sme arrays several times.
+3- I found that if directly use the commnad it will be more fast to tuse the function.
+
+The debuger is used to the what arrays are similar and find error ( if ther eis)
+Porfiler is used to see which commnnad is taking most of computional time.
+
+
+In the next step, in the git hub, the resipority named " my_cmim2018# is created. The matlab file and the gitignore has bee ncopied to above folder. Then, I tired to make some commnet in the matlab to see how it will interact with matlab. 
+1-by right click on the name of the function in matlab add them to git. Then in the folder I saved the file. Roght click open git bash. 
+git status to see which file is changes.
+git add .
+git commit _" trapezoid ..." 
+git push
+user name and pas word. 
+
+Then if you refresh the git hub and click  on the commnet you can see all changes has bee ndone in matlab.
