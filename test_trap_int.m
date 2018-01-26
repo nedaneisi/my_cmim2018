@@ -11,7 +11,7 @@ clc
 %   no_splits - number of trapezoids.
 
 %% integral_trapezoid given in the assignment
-disp(' The aim of the exercise is to modifiy the code given the the computional method in a way that speed up the caclulation 10 times. The matlab cod was added to the repositiry in the git hub').
+disp(' The aim of the exercise is to modifiy the code given the the computional method in a way that speed up the caclulation 10 times. The matlab cod was added to the repositiry in the git hub')
 
 tic
 
