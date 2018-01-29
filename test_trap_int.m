@@ -2,6 +2,7 @@
 
 clear all 
 clc
+%fghgfh
 
 %   Function that calculate the integral of 1D continous function using
 %   well-known trapezoidal rule. Naive approach.
