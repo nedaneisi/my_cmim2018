@@ -1,0 +1,293 @@
+\documentclass[letterpaper,10pt]{article} %
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+%\usepackage{graphicx,amssymb} %
+\usepackage{mathptmx} % Use Times fonts (http://ctan.org/pkg/mathptmx)
+\usepackage{amsmath} % Bold Greek symbols
+\SetSymbolFont{operators}{bold}{OT1}{cmr}{bx}{n}
+\SetSymbolFont{letters}{bold}{OML}{cmm}{b}{it}
+\usepackage[letterpaper]{geometry} % Force letter size
+\usepackage[hidelinks]{hyperref} % Hyperrefs
+\usepackage{physics}
+\usepackage[font=scriptsize]{caption} % Small captions
+\usepackage{xcolor} % Defines colors
+\definecolor{imsd_gray}{rgb}{0.4,0.4,0.4}
+\renewcommand{\figurename}{Fig.}
+\renewcommand{\tablename}{Tab.}
+\textwidth=15cm \hoffset=-1.2cm %
+\textheight=25cm \voffset=-2cm %
+\usepackage{graphicx}
+\pagestyle{empty} %
+%\usepackage[hidelinks]{hyperref}
+\def\keywords#1{\begin{center}{\bf Keywords}\\{#1}\end{center}} %
+\hoffset -1in
+\voffset -1in
+\oddsidemargin 0.8in
+\topmargin 0.1in
+\headheight 0.2in
+\headsep 0.1in
+\textheight 9.5in
+\textwidth 6.9in
+\pagestyle{empty}
+\date{}
+% Please, do not change any of the above lines
+\begin{document}
+\title{\vspace{-1ex} \bfseries
+Assignment 6- Theory of Machines and Mechanisms
+\vspace{1ex}}
+\url{computional mechanic}
+
+%\noindent\textit{Extended Abstract} \hfill The 5\textsuperscript{th} Joint International Conference on Multibody System Dynamics \linebreak
+{\fontsize{10}{12} \selectfont \color{imsd_gray}
+               \noindent\textit{Neda -Assignmet 6}
+               % \hfill The 6\textsuperscript{th} Assignment \linebreak
+               \hphantom{} \hfill March 13, 2018}
+% Generates title
+{\let\newpage\relax\maketitle\thispagestyle{empty}\vspace{-0.5em}}
+\maketitle
+\thispagestyle{empty}
+
+
+
+
+
+\section{Calculation of Euler angel  }
+
+Equation~\ref{eq:Euler angle} shows the rotation matrix using Euler angles. 
+
+
+
+\begin{equation}
+A= \begin{bmatrix}
+\cos\psi \cos\phi-\cos\theta \sin\phi \sin\psi    &    -\sin\psi \cos\phi-\cos\theta \sin\phi \cos\psi  & \sin\theta \sin\phi\\
+\cos\psi \sin\phi+\cos\theta \cos\phi \sin\psi    &  -\sin\psi \sin\phi+\cos\theta \cos\phi \cos\psi   &-\sin\theta \cos\phi\\
+\sin\theta \sin\psi                                &        \sin\theta \cos\psi           &       \cos\theta\\	
+\end{bmatrix}
+\label{eq:Euler angle}
+\end{equation}
+
+Derving the rotation matrix for the following Euler angle  
+
+\begin{eqnarray*}
+	\theta= \begin{bmatrix}
+		\pi/4   & \pi/4   &  \pi/4 \\		
+	\end{bmatrix}
+\end{eqnarray*}
+
+\begin{eqnarray*}
+	A= \begin{bmatrix}
+		0.1464   & -0.8536  &   0.5000\\
+		0.8536   & -0.1464   & -0.5000\\
+		0.5000   &  0.5000   &  0.7071
+	\end{bmatrix}
+\end{eqnarray*}
+
+
+\section{calculation of rotation matrix after rotation} In order to obtain the rotation of $\pi$/6 over around y-axis, it is reuiqred to apply the rotation of $\pi$/2 over z-axis. This makes that the z-axis will be orineted to y-axis. Then, $\psi$ required to rotate -$\pi$/2 to compensate the initial rotation of z-axis.  
+
+\begin{eqnarray*}
+	\theta= \begin{bmatrix}
+		\pi/2   & \pi/6   &  -\pi/2 \\		
+	\end{bmatrix}
+\end{eqnarray*}
+
+
+Euler angle after rotation
+
+\begin{eqnarray*}
+	A= \begin{bmatrix}
+		0.8660   &  0.0000   &  0.5000\\
+		0.0000    & 1.0000   & -0.0000\\
+		-0.5000   &  0.0000   &  0.8660\\
+	\end{bmatrix}
+\end{eqnarray*}
+
+
+Matrix of constrains
+\begin{eqnarray*}
+	C = \begin{bmatrix} 
+		x^2+y\sqrt{z}+ \sin \phi_1 \\
+		xy + xz + y\sin \phi_3+t^3\\
+		\sin \phi_2+	x^\frac{3}{2} +t\\
+	\end{bmatrix}
+\end{eqnarray*}
+
+
+\section{Jacobian, matrix $\dot C$ and $\ddot C$ }
+
+
+\begin{eqnarray*}
+	Cq = \begin{bmatrix} 
+		2x &             1& 1/(2\sqrt{z})& \cos \phi_1&         0&           0\\
+		y + z& x + \sin \phi_3&             x&         0&         0& y \cos \phi_3\\
+		3\sqrt{x}/2&             0&             0&         0& \cos \phi_2&           0\\
+	\end{bmatrix}
+\end{eqnarray*}
+
+
+\begin{eqnarray*}
+	Ct = \begin{bmatrix} 
+		0\\
+		3t^2\\
+		1\\
+	\end{bmatrix}
+\end{eqnarray*}
+
+
+\begin{eqnarray*}
+	\dot C =C_q \dot q +C_t
+\end{eqnarray*}
+
+therefore
+
+
+
+
+
+
+\begin{eqnarray*}
+	\dot C= \begin{bmatrix} 
+		2x &             1& 1/(2\sqrt{z}) & \cos \phi_1&         0&           0\\
+		y + z& x + \sin \phi_3&             x&         0&         0& y \cos \phi_3\\
+		3\sqrt{x}/2&             0&             0&         0& \cos \phi_2&           0\\
+	\end{bmatrix}
+	\begin{bmatrix} 
+		\dot x\\
+		\dot y\\
+		\dot z\\
+		\dot \phi_1\\
+		\dot \phi_2\\
+		\dot \phi_3\\
+	\end{bmatrix}
+	+ \begin{bmatrix} 
+		0\\
+		3t^2\\
+		1\\
+	\end{bmatrix}
+\end{eqnarray*}
+
+
+
+
+\begin{eqnarray*}
+	\dot C = \begin{bmatrix} 
+		\dot y  + 2x\dot x + \dot \phi_1\cos\phi_1 + \dot z  /(2\sqrt{z})\\
+		3t^2 +  \dot x(y + z) + x\dot z  + \dot y(x + \sin\phi_3) + \dot \phi_3y\cos\phi_3\\
+		\dot \phi_2\cos\phi_2 + (3\sqrt{x}\dot x)/2 + 1
+	\end{bmatrix}
+\end{eqnarray*}
+
+
+
+\begin{eqnarray*}
+	Ctt = \begin{bmatrix} 
+		0\\
+		6t\\
+		1\\
+	\end{bmatrix}
+\end{eqnarray*}
+
+
+
+\begin{eqnarray*}
+	\ddot C =C_q \ddot q +(C_q \dot q)_q \dot q+ 2C_{qt} \dot q + C_{tt}
+\end{eqnarray*}
+
+therefore
+
+
+\begin{eqnarray*}
+	\ddot C =\begin{bmatrix}
+		2x &             1& 1/(2\sqrt{z}) & \cos \phi_1&         0&           0\\
+		y + z& x + \sin \phi_3&             x&         0&         0& y \cos \phi_3\\
+		3\sqrt{x}/2&             0&             0&         0& \cos \phi_2&           0\\
+	\end{bmatrix}
+	\begin{bmatrix} 
+		\ddot x\\
+		\ddot y\\
+		\ddot z\\
+		\ddot \phi_1\\
+		\ddot \phi_2\\
+		\ddot \phi_3\\
+	\end{bmatrix}
+\end{eqnarray*}
+
+\begin{eqnarray*}
+	+\begin{bmatrix}
+		2\dot x &   0& -\dot z/(4*z\frac{3}{2})& -\dot \phi_1\sin\phi_1&   0&   0\\
+		\dot y + \dot z& \dot x + \dot \phi_3\cos\phi_3&   \dot x&   0&  0& \dot y\cos\phi_3 - \dot \phi_3y\sin\phi_3\\
+		(3\dot x)/(4\sqrt{x})&  0& 0&  0& -\dot \phi_2\sin\phi_2&    0\\
+	\end{bmatrix}
+	\begin{bmatrix} 
+		\dot x\\
+		\dot y\\
+		\dot z\\
+		\dot \phi_1\\
+		\dot \phi_2\\
+		\dot \phi_3\\
+	\end{bmatrix}
+	+ \begin{bmatrix} 
+		0\\
+		6t\\
+		1\\
+	\end{bmatrix}
+\end{eqnarray*}
+
+then
+
+\begin{eqnarray*}
+	\ddot C =\begin{bmatrix}
+		\ddot y- \dot z^2/(4z\frac{3}{2}) - \dot \phi_1^2\sin \phi_1 + 2x\ddot x + \ddot \phi_1\cos \phi_1 + \ddot z/(2\sqrt{z}) + 2\dot x^2\\
+		6t + \dot \phi_3(\dot y\cos\phi_3 - \dot\phi_3y\sin\phi_3) + \ddot x(y + z) + \dot x(\dot y + \dot z) + x\ddot z + \dot x\dot z+ \dot y\dot x+ \dot \phi_3\cos\phi_3 + \ddot y(x + \sin\phi_3) +  \ddot \phi_3y\cos\phi_3\\
+		(3\dot x^2)/(4\sqrt{x}) - \dot \phi_2^2\sin\phi_2 + \ddot \phi_2\cos\phi_2 + (3\sqrt{x}\ddot x)/2
+	\end{bmatrix}
+\end{eqnarray*}
+
+\section{Newton difference }
+	Figure \ref{fig:flowchart} flow chart of applying NewtonRaphson. In this method first the equation matrix for the constrains and the jacobian matrix will be formed. Then, the Newton difference can be calulalted by equation ~\ref{eq:deltaq}.  
+
+
+\begin{equation}
+	\Delta q = -C_q^{-1}C
+\label{eq:deltaq}
+\end{equation}
+
+
+Afterward, based on the iniital position and the Newton difference the new position can be obtained. and it is used to update the jacobian matrix until reaches to tolerance limit. In the mechanism given in the assingment, the coordinate of the point can be obtained by : $\textbf{\textit{q}}^{0}=\begin{bmatrix}
+\textit{r}^{0} & \varphi^{0}
+\end{bmatrix}^{T}$
+
+the geometry provides the following constrains:
+
+
+ \begin{eqnarray*}
+	C = \begin{bmatrix} 
+		\tan\phi-h/c \\
+		r-\sqrt{h^2+c^2}
+	\end{bmatrix}
+\end{eqnarray*} 
+
+then the jacobian matrix is:
+
+
+
+ \begin{eqnarray*}
+	C = \begin{bmatrix} 
+		0& tan(phi)^2 + 1 \\
+	-2*r&              0
+	\end{bmatrix}
+\end{eqnarray*}
+
+	
+	\begin{figure}[Ht]
+		\centering
+		\includegraphics[height=10cm, width=6cm]{flowchart.jpg}
+		\caption{flow chart of applying NewtonRaphson (source: simulation of mechatronic leture LUT)}
+		\label{fig:flowchart}
+	\end{figure}
+	
+
+
+\end{document}
+
